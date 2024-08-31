@@ -5,11 +5,10 @@ import { FullComponent } from './layouts/full/full.component';
 
 const routes: Routes = [
 
-  {
-    path: '',
-    component: BlankComponent,
-
-  },
+  // {
+  //   path: '',
+  //   component: FullComponent,
+  // },
   {
     path: '',
     component: FullComponent,
@@ -24,12 +23,17 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
         canActivate: []
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./pages/auth/auth.module').then(mod => mod.AuthModule),
+        canActivate: []
       }
-    ]
+    ],
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'home'
   }
 ];
 

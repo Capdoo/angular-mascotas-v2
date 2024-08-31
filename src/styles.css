@@ -1,1 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* min-height: 100vh; */
+}
+
+/* .footer{
+  margin-top: auto;
+} */
+
+.custom-menu {
+  background-color: #3b88ff;
+  height: 72px;
+  border-radius: 0px !important;
+  border: none;
+  margin-left: 0px;
+}
+
+.p-menubar-root-list {
+  padding: 0;
+  /* margin-bottom: 100px; */
+  /* background-color: red; */
+}
+
+.p-menu-list {
+  height: 100%;
+  background-color: gray;
+}
+
+.p-menuitem-content {
+  /* height: 70px; */
+  display: inline;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.p-menubar-button {
+  /* margin-left: 10px; */
+  width: 3rem;
+  height: 3rem;
+}
+
+svg .p-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* .p-menubar-button .p-icon{
+  width: 20px;
+} */
+
+.p-menubar-button :hover {
+  display: none;
+}
+
+.p-menuitem-icon {
+  display: none;
+}
+
+.p-menuitem-text {
+  color: white;
+}
+
+.p-menuitem-content :hover {
+  background-color: #1975ff;
+}
+
+.p-menuitem-link {
+  background-color: #3b88ff;
+}
+
+.p-icon-wrapper {
+  /* color: white; */
+
+}
+
+barsicon {
+  color: white;
+}
+
+.p-menubar .p-menubar-button {}
+
+.p-menubar-button:hover {
+  /* display: none; */
+  /* background-color: #1975ff; */
+}
+
