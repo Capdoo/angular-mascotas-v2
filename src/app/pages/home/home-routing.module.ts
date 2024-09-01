@@ -13,12 +13,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
+
   ],
   exports: [
     RouterModule

@@ -8,10 +8,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-import {MatIconModule} from '@angular/material/icon';
-
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatTabsModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

@@ -19,11 +19,11 @@ const routes: Routes = [
         loadChildren: () => import('./pages/pets/pets.module').then(mod => mod.PetsModule),
         canActivate: []
       },
-      {
-        path: 'home',
-        loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
-        canActivate: []
-      },
+      // {
+      //   path: 'home',
+      //   loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
+      //   canActivate: []
+      // },
       {
         path: 'auth',
         loadChildren: () => import('./pages/auth/auth.module').then(mod => mod.AuthModule),
@@ -33,7 +33,9 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'auth',
+    // redirectTo: 'auth/login'
+    // pathMatch: 'full'
   }
 ];
 

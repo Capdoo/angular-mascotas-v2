@@ -1,1 +1,148 @@
-<p>register works!</p>
+<!-- <button (click)="verMsj()"> 
+  #devVerMsj
+</button>
+
+<button (click)="verMsjErr()"> 
+  #devVerMsjErr
+</button>
+
+
+<button (click)="verTimer()"> 
+  #devVerTimer
+</button> -->
+
+<div class="register-container flex justify-content-center" style="border: none;">
+  <div class="contenido xl:px-8 flex justify-content-center align-items-start mt-4"
+    style="border: none; width: 90%; height: auto;">
+
+    <div class="register-card">
+      <mat-card appearance="outlined" class="px-2 mb-4">
+
+        <mat-card-header>
+          <mat-card-title class=" mt-2">Register</mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content class="mt-4 mb-3 grid">
+
+          <form action="" [formGroup]="registerGroup">
+
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Apellido Paterno</mat-label>
+              <input matInput formControlName="registerApePaterno" [errorStateMatcher]="matcher" appTextOnly>
+
+              @if (registerGroup.get('registerApePaterno').hasError('required')) {
+              <mat-error>Apellido Paterno is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Apellido Materno</mat-label>
+              <input matInput formControlName="registerApeMaterno" [errorStateMatcher]="matcher" appTextOnly>
+              @if (registerGroup.get('registerApeMaterno').hasError('required')) {
+              <mat-error>Apellido Materno is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width  col-12 col-md-6">
+              <mat-label>Nombres</mat-label>
+              <input matInput formControlName="registerNombres" [errorStateMatcher]="matcher" appTextOnly>
+              @if (registerGroup.get('registerNombres').hasError('required')) {
+              <mat-error>Nombres is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width  col-12 col-md-6">
+              <mat-label>Usuario</mat-label>
+              <input matInput formControlName="registerUsuario" [errorStateMatcher]="matcher" [maxlength]="30">
+              @if (registerGroup.get('registerUsuario').hasError('required')) {
+              <mat-error>Usuario is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Contraseña</mat-label>
+              <input matInput formControlName="registerContrasena" [errorStateMatcher]="matcher" type="password" [maxlength]="50">
+              @if (registerGroup.get('registerContrasena').hasError('required')) {
+              <mat-error>Contraseña is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Repetir contraseña</mat-label>
+              <input matInput formControlName="registerRepetirContrasena" [errorStateMatcher]="matcher" type="password" [maxlength]="50">
+              @if (registerGroup.get('registerRepetirContrasena').hasError('required')) {
+              <mat-error>Contraseña is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Telefono #1</mat-label>
+              <input matInput formControlName="registerTelefono1" [errorStateMatcher]="matcher" appNumbersOnly>
+              @if (registerGroup.get('registerTelefono1').hasError('required')) {
+              <mat-error>Telefono #1 is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Telefono #2 (opcional)</mat-label>
+              <input matInput formControlName="registerTelefono2" [errorStateMatcher]="matcher" appNumbersOnly>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12">
+              <mat-label>Correo</mat-label>
+              <input matInput formControlName="registerCorreo" [errorStateMatcher]="matcher">
+
+              @if (registerGroup.get('registerCorreo').hasError('email') &&
+              !registerGroup.get('registerCorreo').hasError('required')) {
+              <mat-error>Please enter a valid email address</mat-error>
+              }
+              @if (registerGroup.get('registerCorreo').hasError('required')) {
+              <mat-error>Correo is <strong>required</strong></mat-error>
+              }
+
+            </mat-form-field>
+
+
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Provincia</mat-label>
+              <input matInput disabled value="LIMA" [errorStateMatcher]="matcher">
+            </mat-form-field>
+
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
+              <mat-label>Distrito</mat-label>
+              <mat-select formControlName="registerDistrito" [errorStateMatcher]="matcher">
+                <mat-option *ngFor="let item of distritos" value="one">{{item.description}}</mat-option>
+              </mat-select>
+
+              @if (registerGroup.get('registerDistrito').hasError('required')) {
+              <mat-error>Distrito is <strong>required</strong></mat-error>
+              }
+
+            </mat-form-field>
+
+
+            <mat-form-field floatLabel="always" class="example-full-width col-12">
+              <mat-label>Dirección (opcional)</mat-label>
+              <input matInput formControlName="registerDireccion" [errorStateMatcher]="matcher" [maxlength]="120">
+            </mat-form-field>
+
+            
+            <button class="mt-2" mat-button (click)="submit()" [disabled]="!flagSubmit">Registrar</button>
+            
+          </form>
+
+        </mat-card-content>
+
+        <!-- <mat-card-actions class=" mb-3 ml-2 mr-2" style="width: 100%; border: double;">
+        </mat-card-actions> -->
+      </mat-card>
+    </div>
+
+
+  </div>
+</div>

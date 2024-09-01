@@ -1,0 +1,41 @@
+.register-container{
+  /* background-color: #5e9dff; */
+  background-color: #296cd4;
+  height: calc(100vh - 64px);
+
+  /* height: auto !important; */
+  /* min-height: -webkit-fill-available; */
+  overflow: auto;
+
+}
+
+@media screen and (max-width: 599px) {
+  .register-container {
+    height: calc(100vh - 56px);
+  }
+}
+
+.register-card{
+  /* width: 506.09px; */
+  width: 700px;
+
+  overflow: auto;
+
+}
+
+mat-card {
+  overflow: auto;
+}
+
+/* @media screen and (max-width: 599px) {
+  .register-container {
+    height: calc(100vh - 56px);
+  }
+} */
+
+button {
+  color: white !important;
+  background-color: #3b88ff;
+  /* background-color: #296cd4; */
+  width: 100%;
+}
