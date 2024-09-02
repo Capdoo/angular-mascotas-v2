@@ -40,35 +40,31 @@
 
   <mat-toolbar-row class="secuRow block lg:hidden" *ngIf="isSmallMenu">
     <div>
-      <!-- <button *ngIf="!isLogged" mat-button routerLink="home">Inicio</button> -->
       <button mat-button routerLink="home">Inicio</button>
     </div>
 
-    <div>
-      <!-- <button *ngIf="isLogged" mat-button routerLink="projects">Mis Evaluaciones</button> -->
-      <button *ngIf="isLogged" mat-button routerLink="myevaluations">Mis Evaluaciones</button>
-    </div>
-
-    <div>
+    <!-- <div>
       <button *ngIf="isLogged" mat-button (click)="cleanGlobalInfo()" routerLink="newevaluation">Nueva
         Evaluación</button>
-    </div>
+    </div> -->
 
-    <div>
-      <!-- <button *ngIf="isLogged" mat-button routerLink="projects">Mis Evaluaciones</button> -->
+    <!-- <div>
       <button *ngIf="isLogged" mat-button routerLink="newevaluation">Cdk Nueva Eval</button>
+    </div> -->
+
+    <div>
+      <!-- <button *ngIf="isLogged" mat-button routerLink="projects">Búsquedas</button> -->
+      <button  mat-button routerLink="projects">Búsquedas</button>
     </div>
 
     <div>
-      <button *ngIf="!isLogged" mat-button routerLink="projects">Búsquedas</button>
+      <!-- <button *ngIf="isLogged" mat-button routerLink="aboutus">Adopciones</button> -->
+      <button mat-button routerLink="aboutus">Adopciones</button>
     </div>
 
     <div>
-      <button *ngIf="!isLogged" mat-button routerLink="aboutus">Adopciones</button>
-    </div>
-
-    <div>
-      <button *ngIf="!isLogged" mat-button routerLink="aboutus">Albergues</button>
+      <!-- <button *ngIf="isLogged" mat-button routerLink="aboutus">Albergues</button> -->
+      <button  mat-button routerLink="aboutus">Albergues</button>
     </div>
 
     <div class="group">

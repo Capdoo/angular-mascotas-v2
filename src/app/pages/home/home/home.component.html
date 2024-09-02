@@ -1,11 +1,16 @@
-<div class="overlay-2">
+<div *ngIf="!flagLogged" class="overlay-2">
   <div class="flex justify-content-center align-items-end" style="height: 100%;">
     <p style="color: white;">Mascotas Perdidas App</p>
   </div>
 </div>
 
 
-<div class="cuarter flex justify-content-center" style="border: none;">
+<!-- <div *ngIf="!flagLogged" class="">
+  <button (click)="verInfo()">#devVerInfo</button>
+</div> -->
+
+
+<div *ngIf="!flagLogged" class="cuarter flex justify-content-center" style="border: none;">
 
   <div class="contenido grid xl:px-8" style="border: none; width: 90%; height: auto;">
 
@@ -13,8 +18,7 @@
       <div class="cuarter flex justify-content-center align-items-center">
 
         <div class="col-12" style="border: none; width: 100%;">
-          <img class="mt-1 img-fluid" alt="Card" src="assets/fondo1.jpg"
-            style="height: auto; border: none" />
+          <img class="mt-1 img-fluid" alt="Card" src="assets/fondo1.jpg" style="height: auto; border: none" />
         </div>
 
       </div>
@@ -22,6 +26,41 @@
   </div>
 
 </div>
+
+<div *ngIf="flagLogged" class="mt-3 flex justify-content-center align-items-center" style="border: none;">
+  <h1>Hola {{usuario}} 😺</h1>
+</div>
+
+<!-- <button mat-button (click)="switchSideNav()"><mat-icon>dashboard</mat-icon></button>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" [opened]="flagSideNav" mode="side">
+    <mat-nav-list>
+      <mat-list-item>
+        <button mat-button (click)="switchSideNav()"><mat-icon>dashboard</mat-icon></button>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <p>Auto-resizing sidenav</p>
+    @if (showFiller) {
+    <p>Lorem, ipsum dolor sit amet consectetur.</p>
+    }
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <mat-drawer-content>
+  </mat-drawer-content>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container> -->
+
+
+
 
 <div class="mt-3 flex justify-content-center align-items-center" style="border: none;">
   <h1>Servicios Ofrecidos</h1>
@@ -34,7 +73,8 @@
       <mat-card appearance="outlined">
         <mat-card-header>
           <mat-card-title>Módulo de Adopciones</mat-card-title>
-          <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, maxime?</mat-card-subtitle>
+          <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
+            maxime?</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-actions>
@@ -48,7 +88,8 @@
       <mat-card appearance="outlined">
         <mat-card-header>
           <mat-card-title> Módulo de Búsquedas</mat-card-title>
-          <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, maxime?</mat-card-subtitle>
+          <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
+            maxime?</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-actions>
@@ -62,7 +103,8 @@
       <mat-card appearance="outlined">
         <mat-card-header>
           <mat-card-title>Módulo de Albergues</mat-card-title>
-          <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, maxime?</mat-card-subtitle>
+          <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
+            maxime?</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-actions>

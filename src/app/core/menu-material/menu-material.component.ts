@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../shared/services/event.service';
+import { TokenService } from '../../shared/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-material',
   templateUrl: './menu-material.component.html',
   styleUrl: './menu-material.component.css'
 })
-export class MenuMaterialComponent {
+export class MenuMaterialComponent implements OnInit{
 
   isLogged = false;
   isAdmin = false;
@@ -22,8 +25,26 @@ export class MenuMaterialComponent {
   //
   isSmallMenu: boolean = false;
 
-  onLogOut(): void{
+  constructor(private eventService: EventService,
+    private tokenService: TokenService,
+    private router: Router
+  ) { }
 
+  ngOnInit(): void {
+    this.eventService.flagLogged.subscribe( res => {
+      if (res) {
+        this.isLogged = true;
+      }
+    });
+
+  }
+
+  onLogOut(): void{
+    this.tokenService.logOut();
+    this.isLogged = false;
+    this.router.navigate(['/home']);
+
+    this.eventService.flagLogout.emit(true);
   }
 
   onSmallMenu(): void{
@@ -31,9 +52,6 @@ export class MenuMaterialComponent {
     console.log(this.isSmallMenu)
   }
 
-  cleanGlobalInfo(): void {
-
-
-  }
+  cleanGlobalInfo(): void { }
 
 }

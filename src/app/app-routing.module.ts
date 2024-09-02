@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
+import { ResourceGuard } from './guard/resource.guard';
 
 const routes: Routes = [
 
@@ -17,13 +18,16 @@ const routes: Routes = [
       {
         path: 'pets',
         loadChildren: () => import('./pages/pets/pets.module').then(mod => mod.PetsModule),
+        canActivate: [ResourceGuard],
+        data: {
+          expectedRol: ['admin', 'user']
+        }
+      },
+      {
+        path: 'home',
+        loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
         canActivate: []
       },
-      // {
-      //   path: 'home',
-      //   loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
-      //   canActivate: []
-      // },
       {
         path: 'auth',
         loadChildren: () => import('./pages/auth/auth.module').then(mod => mod.AuthModule),
@@ -33,7 +37,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: 'home',
     // redirectTo: 'auth/login'
     // pathMatch: 'full'
   }

@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, Ng
 import { UtilToolsService } from '../../../shared/services/util-tools.service';
 import { AuthService } from '../../../shared/services/auth.service';
 import { UserLoginDto } from '../interfaces/user-login-dto';
+import { TokenService } from '../../../shared/services/token.service';
+import { EventService } from '../../../shared/services/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +18,15 @@ export class LoginComponent {
 
   constructor(private utilToolsService: UtilToolsService,
     private _formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private eventService: EventService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.enInicio();
-
   }
-
   
   enInicio(): void {
     this.loginGroup = this._formBuilder.group({
@@ -39,18 +43,22 @@ export class LoginComponent {
     return loginUserDto;
   }
 
-
   submit(): void {
-
     if (this.loginGroup.valid) {
-
       let loginUserDto = this.obtenerRequest();
       console.log(loginUserDto);
 
       this.authService.loginUser(loginUserDto).subscribe(
         data => {
+
+          this.tokenService.setToken(data.token);
+          this.eventService.flagLogged.emit(true);
+
           console.log(data);
           this.utilToolsService.successNotif('Login', 'Login exitoso');
+
+          this.router.navigate(['/home']);
+
         },
         err => {
           console.error(err);
@@ -58,12 +66,9 @@ export class LoginComponent {
         }
       );
 
-
     } else {
       this.utilToolsService.errNotif('Login', 'Campos incorrectos');
       return;
     }
   }
-
-
 }

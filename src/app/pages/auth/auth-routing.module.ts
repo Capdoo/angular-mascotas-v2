@@ -8,15 +8,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpperTextOnlyDirective } from '../../shared/directives/upper-text-only.directive';
 import { TextOnlyDirective } from '../../shared/directives/text-only.directive';
 import { NumbersOnlyDirective } from '../../shared/directives/numbers-only.directive';
+import { LoginGuard } from '../../guard/login.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: '**',
