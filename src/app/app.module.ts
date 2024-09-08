@@ -11,13 +11,15 @@ import { AuthRoutingModule } from './pages/auth/auth-routing.module';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { HttpClientModule } from '@angular/common/http';
+import { ManageComponent } from './layouts/manage/manage.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
-    BlankComponent
+    BlankComponent,
+    ManageComponent
   ],
   imports: [
     BrowserModule,

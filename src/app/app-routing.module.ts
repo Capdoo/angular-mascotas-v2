@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ResourceGuard } from './guard/resource.guard';
+import { ManageComponent } from './layouts/manage/manage.component';
 
 const routes: Routes = [
 
@@ -34,6 +35,21 @@ const routes: Routes = [
         canActivate: []
       }
     ],
+  },
+  {
+    path: 'dashboard',
+    component: ManageComponent,
+    canActivate: [],
+    children: [
+      {
+        path: 'my-pets',
+        loadChildren: () => import('./pages/my-pets/my-pets.module').then(mod => mod.MyPetsModule),
+        // canActivate: [ResourceGuard],
+        data: {
+          expectedRol: ['admin', 'user']
+        }
+      }
+    ]
   },
   {
     path: '**',

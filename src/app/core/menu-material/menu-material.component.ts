@@ -31,6 +31,8 @@ export class MenuMaterialComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    this.isLogged = this.tokenService.isLogged();
+
     this.eventService.flagLogged.subscribe( res => {
       if (res) {
         this.isLogged = true;
