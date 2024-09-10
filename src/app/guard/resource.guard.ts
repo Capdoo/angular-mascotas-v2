@@ -20,9 +20,14 @@ export class ResourceGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
+    console.log("-------------------------Inicio can Activate Resource")
     //Es el rol que se espera para acceder a la ruta
     //Se indica en Routing
+    console.log('Esta es la ruta! ResourceGuard');
+    console.log(route);
+    console.log(route.url[0].path);
+
+
     const expectedRol = route.data['expectedRol'];
 
     //Change if other roles appear
@@ -31,10 +36,13 @@ export class ResourceGuard implements CanActivate {
     //Verifica si existe un token (primero)
     //Verifica si el rol esperado es el que yo tengo
     if (!this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0) {
-      this.router.navigate(['/']);
-      console.log("Exited by resource guard");
+      this.router.navigate(['/site']);
+      console.log("-------------------------Exited by Resource Guard");
       return false;
     }
+
+    console.log("-------------------------Can by Resource Guard");
+
     return true;
   }
 }

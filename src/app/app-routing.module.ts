@@ -4,58 +4,59 @@ import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ResourceGuard } from './guard/resource.guard';
 import { ManageComponent } from './layouts/manage/manage.component';
+import { ManageGuard } from './guard/manage.guard';
+import { LoginGuard } from './guard/login.guard';
+import { HomeComponent } from './pages/home/home/home.component';
 
 const routes: Routes = [
-
   // {
   //   path: '',
-  //   component: FullComponent,
+  //   component: BlankComponent,
+  //   // redirectTo: 'site'
   // },
   {
-    path: '',
+    path: 'site',
     component: FullComponent,
-    canActivate: [],
+    canActivate: [LoginGuard],
     children: [
       {
-        path: 'pets',
-        loadChildren: () => import('./pages/pets/pets.module').then(mod => mod.PetsModule),
-        canActivate: [ResourceGuard],
-        data: {
-          expectedRol: ['admin', 'user']
-        }
-      },
-      {
         path: 'home',
-        loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
-        canActivate: []
+        component: HomeComponent,
       },
       {
         path: 'auth',
         loadChildren: () => import('./pages/auth/auth.module').then(mod => mod.AuthModule),
-        canActivate: []
-      }
-    ],
-  },
-  {
-    path: 'dashboard',
-    component: ManageComponent,
-    canActivate: [],
-    children: [
+        // canActivate: [LoginGuard]
+      },
       {
-        path: 'my-pets',
-        loadChildren: () => import('./pages/my-pets/my-pets.module').then(mod => mod.MyPetsModule),
-        // canActivate: [ResourceGuard],
-        data: {
-          expectedRol: ['admin', 'user']
-        }
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
       }
     ]
   },
   {
+    path: 'dashboard',
+    component: ManageComponent,
+    canActivate: [ResourceGuard],
+    children: [
+      {
+        path: 'my-pets',
+        loadChildren: () => import('./pages/my-pets/my-pets.module').then(mod => mod.MyPetsModule),
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      }
+    ],
+    data: {
+      expectedRol: ['admin', 'user']
+    }
+  },
+  {
     path: '**',
-    redirectTo: 'home',
-    // redirectTo: 'auth/login'
-    // pathMatch: 'full'
+    redirectTo: 'site'
   }
 ];
 

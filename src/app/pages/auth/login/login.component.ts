@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { UtilToolsService } from '../../../shared/services/util-tools.service';
 import { AuthService } from '../../../shared/services/auth.service';
@@ -52,12 +52,12 @@ export class LoginComponent {
         data => {
 
           this.tokenService.setToken(data.token);
-          this.eventService.flagLogged.emit(true);
+          // this.eventService.flagLogged.emit(true);
 
           console.log(data);
           this.utilToolsService.successNotif('Login', 'Login exitoso');
 
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
 
         },
         err => {

@@ -1,0 +1,8 @@
+mat-toolbar {
+  /* height: 200px; */
+  background-color: #a5adb8;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}

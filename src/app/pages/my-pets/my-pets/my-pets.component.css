@@ -1,0 +1,10 @@
+.my-pets-container{
+  background-color: #296cd4;
+  height: calc(100vh - 64px);
+}
+
+@media screen and (max-width: 599px) {
+  .my-pets-container {
+    height: calc(100vh - 56px);
+  }
+}

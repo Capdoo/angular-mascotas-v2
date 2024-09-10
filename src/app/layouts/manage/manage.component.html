@@ -1,3 +1,78 @@
-<p>manage works!</p>
-<!-- <app-menu-material></app-menu-material>
-<router-outlet></router-outlet> -->
+<app-menu-manage></app-menu-manage>
+
+<div class="manage-container " style="border: none;">
+
+  <mat-drawer-container autosize style="height: 100%; width: 100%;">
+
+    <mat-drawer #drawer [opened]="flagSideNav" mode="side" class="flex flex-column align-content-between"
+      style="border: none;">
+
+      <div style="border: none;">
+
+        <div class="mt-3 flex justify-content-center align-items-center" style="border: none;">
+          <div class="flex align-items-center justify-content-center" style="border: none;">
+            <img class="img-fluid user" src="../../../../assets/user.jpg" alt=""
+              style="height: auto; width: 150px;border: none;" max-width="100%">
+          </div>
+        </div>
+
+        <div class="mt-3 flex justify-content-center">
+          <div>
+            <p>{{username}}</p>
+          </div>
+        </div>
+
+        <mat-nav-list class="flex flex-column">
+          <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+        </mat-nav-list>
+
+        <!--
+        <mat-nav-list class="flex flex-column" style="border: none;">
+          <mat-list-item routerLink="my-pets">
+            <mat-icon matListItemIcon>home</mat-icon>
+            Inicio
+          </mat-list-item>
+          <mat-list-item routerLink="my-pets">
+            <mat-icon matListItemIcon>pets</mat-icon>
+            Mis Mascotas
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon matListItemIcon>dashboard</mat-icon>
+            Adopciones
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon matListItemIcon>search</mat-icon>
+            Busquedas
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon matListItemIcon>house_with_shield</mat-icon>
+            Albergues
+          </mat-list-item>
+
+          <mat-list-item class="last">
+            <mat-icon matListItemIcon>logout</mat-icon>
+            Cerrar Sesión
+          </mat-list-item>
+        </mat-nav-list>
+      -->
+      </div>
+
+      <!-- <mat-nav-list style="border: none;" class="mt-auto last">
+        <mat-list-item>
+          <mat-icon matListItemIcon>logout</mat-icon>
+          Cerrar Sesión
+        </mat-list-item>
+      </mat-nav-list> -->
+    </mat-drawer>
+
+    <mat-drawer-content style="height: 100%;">
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+</div>

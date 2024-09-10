@@ -4,54 +4,49 @@ import { TokenService } from '../../shared/services/token.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-menu-material',
-  templateUrl: './menu-material.component.html',
-  styleUrl: './menu-material.component.css'
+  selector: 'app-menu-manage',
+  templateUrl: './menu-manage.component.html',
+  styleUrl: './menu-manage.component.css'
 })
-export class MenuMaterialComponent implements OnInit{
-
+export class MenuManageComponent implements OnInit{
+  
   isLogged = false;
   isAdmin = false;
-  //later ...
   isOwner = false;
-
-  //responsive
   isScreenSm!: boolean;
   isScreenXs!: boolean;
-  //
   screenSize!: string;
-  //
   smLimit!: boolean;
-  //
   isSmallMenu: boolean = false;
+
+  flagSideNav: boolean = false;
 
   constructor(private eventService: EventService,
     private tokenService: TokenService,
     private router: Router
   ) { }
-
+  
   async ngOnInit() {
-    this.isLogged = await this.tokenService.isLogged();
+    this.isLogged =  this.tokenService.isLogged();
 
-    this.eventService.flagLogged.subscribe( res => {
-      if (res) {
-        this.isLogged = true;
-      }
-    });
-
+    // this.eventService.flagLogged.subscribe( res => {
+    //   if (res) {
+    //     this.isLogged = true;
+    //   }
+    // });
   }
+
 
   onLogOut(): void{
     this.tokenService.logOut();
     this.isLogged = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/site']);
 
     this.eventService.flagLogout.emit(true);
   }
 
   onSmallMenu(): void{
-    this.isSmallMenu = !this.isSmallMenu;
-    console.log(this.isSmallMenu)
+    this.eventService.flagSidenav.emit(true);
   }
 
   cleanGlobalInfo(): void { }

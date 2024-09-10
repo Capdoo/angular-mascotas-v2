@@ -27,7 +27,7 @@ export class TokenService {
 
   }
 
-  public isLogged(): boolean{
+  public isLogged() {
     return this.getToken() == null ? false : true;
   }
 

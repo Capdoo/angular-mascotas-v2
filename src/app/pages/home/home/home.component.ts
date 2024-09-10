@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../../shared/services/event.service';
 import { TokenService } from '../../../shared/services/token.service';
+import { UtilToolsService } from '../../../shared/services/util-tools.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,38 +11,35 @@ import { TokenService } from '../../../shared/services/token.service';
 })
 export class HomeComponent implements OnInit{
 
-  flagLogged: boolean = false;
-  usuario: string;
-  showFiller: boolean = false;
+  // flagLogged: boolean = false;
+  // usuario: string;
+  // showFiller: boolean = false;
 
-  flagSideNav: boolean = false;
+  // flagSideNav: boolean = false;
 
 
   constructor(private eventService: EventService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private utilToolsService: UtilToolsService,
+    private router: Router
   ) {
+    console.log("HomeComponent En Constructor")
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
-    this.flagLogged = this.tokenService.isLogged();
-    this.usuario = this.tokenService.getUsername();
+    // this.utilToolsService.Timer();
+    // setTimeout(() => {
+    //   console.log("Delayed for 1 second.");
+    //   this.utilToolsService.CloseTimer();
+    // }, 3000);
 
-    this.eventService.flagLogout.subscribe( res => {
-      if (res) {
-        this.flagLogged = false;
-      }
-    })
+
+    console.log("HomeComponent En On Init")
+
+
   }
 
-  switchSideNav(): void {
-    this.flagSideNav = !this.flagSideNav;
-  }
-
-  verInfo(): void {
-    console.log(this.flagLogged);
-    console.log(this.usuario);
-  }
 
 }

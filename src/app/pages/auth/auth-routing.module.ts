@@ -14,12 +14,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [LoginGuard]
+    // canActivate: [LoginGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [LoginGuard]
+    // canActivate: [LoginGuard]
   },
   {
     path: '**',

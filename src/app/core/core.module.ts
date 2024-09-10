@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PrimengModule } from '../shared/primeng.module';
 import { MenuMaterialComponent } from './menu-material/menu-material.component';
 import { MaterialModule } from '../shared/material.module';
+import { MenuManageComponent } from './menu-manage/menu-manage.component';
 
 
 
@@ -12,7 +13,8 @@ import { MaterialModule } from '../shared/material.module';
   declarations: [
     MenuComponent,
     FooterComponent,
-    MenuMaterialComponent
+    MenuMaterialComponent,
+    MenuManageComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { MaterialModule } from '../shared/material.module';
   exports: [
     MenuComponent,
     MenuMaterialComponent,
+    MenuManageComponent,
     FooterComponent
   ]
 })
