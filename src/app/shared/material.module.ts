@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [],
@@ -34,7 +35,8 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule { }

@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { ResourceGuard } from './guard/resource.guard';
 import { ManageComponent } from './layouts/manage/manage.component';
-import { ManageGuard } from './guard/manage.guard';
 import { LoginGuard } from './guard/login.guard';
 import { HomeComponent } from './pages/home/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: BlankComponent,
-  //   // redirectTo: 'site'
-  // },
   {
     path: 'site',
     component: FullComponent,
@@ -26,7 +20,6 @@ const routes: Routes = [
       {
         path: 'auth',
         loadChildren: () => import('./pages/auth/auth.module').then(mod => mod.AuthModule),
-        // canActivate: [LoginGuard]
       },
       {
         path: '',
@@ -41,12 +34,20 @@ const routes: Routes = [
     canActivate: [ResourceGuard],
     children: [
       {
+        path: '',
+        component: DashboardComponent
+      },
+      {
         path: 'my-pets',
         loadChildren: () => import('./pages/my-pets/my-pets.module').then(mod => mod.MyPetsModule),
       },
       {
+        path: 'pets',
+        loadChildren: () => import('./pages/pets/pets.module').then(mod => mod.PetsModule),
+      },
+      {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: '',
         pathMatch: 'full'
       }
     ],
@@ -56,7 +57,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'site'
+    redirectTo: 'site',
+    pathMatch: 'full'
   }
 ];
 

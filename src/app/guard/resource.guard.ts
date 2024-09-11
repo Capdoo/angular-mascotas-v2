@@ -27,10 +27,8 @@ export class ResourceGuard implements CanActivate {
     console.log(route);
     console.log(route.url[0].path);
 
-
     const expectedRol = route.data['expectedRol'];
 
-    //Change if other roles appear
     this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';
 
     //Verifica si existe un token (primero)
@@ -42,7 +40,6 @@ export class ResourceGuard implements CanActivate {
     }
 
     console.log("-------------------------Can by Resource Guard");
-
     return true;
   }
 }

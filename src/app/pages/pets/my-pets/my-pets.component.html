@@ -1,0 +1,50 @@
+<!-- <p>my-pets works!</p> -->
+<div class="mt-4 my-pets-container flex justify-content-center" style="border: none;">
+
+  <div class="contenido align-items-center mt-4 " style="border: none; width: 95%; height: auto;">
+
+    <div class="flex justify-content-start align-items-end" style="border: none; width: 100%; height: auto; margin-left: 25px;">
+      <h1>Mis Mascotas</h1>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="my-pets-container flex justify-content-center" style="border: none;">
+
+  <div class="contenido align-items-center mt-4 " style="border: none; width: 95%; height: auto; ">
+
+    <div *ngIf="!flagPets" style="margin-left: 29px">
+      <h3 style="color: gray;">Cuando registres tus mascotas, apareceran aqui:)</h3>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="flagPets" class="my-pets-container flex justify-content-center" style="border: none;">
+
+  <div class="contenido align-items-center mt-4 " style="border: none; width: 95%; height: auto;">
+
+    <div class="grid grid-nogutter">
+      <!-- Utilizamos ngFor para iterar sobre la lista de mascotas -->
+      <div class="col-12 col-sm-6 col-lg-6 col-xl-4" *ngFor="let mascota of listPetsDto">
+        <mat-card class="mat-elevation-z3">
+          <img mat-card-image [src]="'data:image/jpeg;base64,'+mascota.encoded" alt="{{ mascota.name }}">
+          <mat-card-header>
+            <mat-card-title>{{ mascota.name }}</mat-card-title>
+            <mat-card-subtitle>{{ mascota.breed }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{ mascota.registerDate }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+
+  </div>
+</div>

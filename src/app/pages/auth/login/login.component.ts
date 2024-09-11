@@ -52,7 +52,7 @@ export class LoginComponent {
         data => {
 
           this.tokenService.setToken(data.token);
-          // this.eventService.flagLogged.emit(true);
+          this.eventService.flagLogged.emit(true);
 
           console.log(data);
           this.utilToolsService.successNotif('Login', 'Login exitoso');

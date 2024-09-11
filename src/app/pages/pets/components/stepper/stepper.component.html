@@ -1,0 +1,10 @@
+<p>stepper works!</p>
+
+
+<mat-stepper linear="false" #stepper> 
+  <mat-step *ngFor="let etapa of etapas; let i = index">
+    <div>
+      <ng-template matStepLabel>{{ etapa }}</ng-template>
+    </div>
+  </mat-step>
+</mat-stepper>

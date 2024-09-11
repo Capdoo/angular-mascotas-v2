@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
   // flagLogged: boolean = false;
   // usuario: string;
@@ -34,6 +34,18 @@ export class HomeComponent implements OnInit{
     //   console.log("Delayed for 1 second.");
     //   this.utilToolsService.CloseTimer();
     // }, 3000);
+
+    // this.eventService.flagLogged.subscribe(
+    //   res => {
+    //     if (res) {
+    //       this.isLogged = true;
+    //       console.log(this.isLogged)
+    //     } else {
+    //       this.isLogged = false;
+    //       console.log(this.isLogged)
+    //     }
+    //   }
+    // )
 
 
     console.log("HomeComponent En On Init")

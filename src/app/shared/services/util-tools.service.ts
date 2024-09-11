@@ -73,6 +73,44 @@ export class UtilToolsService {
     });
   }
 
+  infoNotif(component: string, message: string): void {
+    Swal.fire({
+      title: component,
+      text: message,
+      icon: "info",
+      // showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      // cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success"
+        // });
+      }
+    });
+  }
+
+  mistery(component: string, message: string): void {
+    Swal.fire({
+      title: "Custom width, padding, color, background.",
+      width: 600,
+      padding: "3em",
+      color: "#716add",
+      background: "#fff url(/images/trees.png)",
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    });
+  }
+
+  
+
   Timer = () => {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {

@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenService } from '../shared/services/token.service';
 import { UtilToolsService } from '../shared/services/util-tools.service';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
 
+  flagLog: boolean = false;
+
   constructor(
     private tokenService: TokenService,
     private router: Router,
-    private utilToolsService: UtilToolsService
+    private utilToolsService: UtilToolsService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   //Si el usuario esta logeado pero intenta acceder a la vista de Login se le redirige a Home (Index)
@@ -23,16 +27,14 @@ export class LoginGuard implements CanActivate {
     console.log('Esta es la ruta/////////////////////');
     console.log(route);
     console.log(route.url[0].path);
-    // const flagLogged =  this.tokenService.isLogged();
+    
+    this.flagLog = this.tokenService.isLogged();
 
-    if (this.tokenService.isLogged()) {
+    if (this.flagLog) {
       this.router.navigate(['/dashboard']);
-      console.log("-------------------------Exited by Login Guard");
       return false;
     }
-    console.log("-------------------------Can by Login Guard");
 
     return true;
   }
-
 }

@@ -21,8 +21,6 @@ import { Router } from '@angular/router';
 })
 export class ManageComponent implements OnInit {
 
-
-
   flagSideNav: boolean = true;
   username: string = "";
   navItems: NavItem[] = [
@@ -38,19 +36,31 @@ export class ManageComponent implements OnInit {
         {
           displayName: 'Nueva mascota',
           iconName: 'add',
-          route: 'dashboard/my-pets'
+          route: 'dashboard/pets/new-pet'
         },
         {
           displayName: 'Mis mascotas',
           iconName: 'bookmark_heart',
-          route: 'dashboard/my-pets'
+          route: 'dashboard/pets/my-pets'
         },
       ]
     },
     {
       displayName: 'Adopciones',
       iconName: 'dashboard',
-      route: ''
+      route: '',
+      children: [
+        {
+          displayName: 'Nueva mascota',
+          iconName: 'add',
+          route: 'dashboard/pets/new-pet'
+        },
+        {
+          displayName: 'Mis mascotas',
+          iconName: 'bookmark_heart',
+          route: 'dashboard/pets/my-pets'
+        },
+      ]
     },
     {
       displayName: 'Búsquedas',
@@ -86,6 +96,11 @@ export class ManageComponent implements OnInit {
     // } else {
     //   this.utilToolsService.CloseTimer();
     // }
+
+    // this.isLogged = this.tokenService.isLogged();
+    if (this.tokenService.isLogged()) {
+      // this.eventService.flagLogged.emit(true);
+    }
 
 
     this.eventService.flagSidenav.subscribe(

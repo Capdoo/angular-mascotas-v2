@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../../shared/services/token.service';
 import { UtilToolsService } from '../../shared/services/util-tools.service';
 import { Router } from '@angular/router';
+import { EventService } from '../../shared/services/event.service';
 
 @Component({
   selector: 'app-full',
@@ -9,29 +10,17 @@ import { Router } from '@angular/router';
   styleUrl: './full.component.css'
 })
 export class FullComponent implements OnInit{
-  
+  isLogged: boolean = false;
+
   constructor(private tokenService: TokenService,
     private utilToolsService: UtilToolsService,
-    private router: Router
+    private router: Router,
+    private eventService: EventService
   ) { }
 
   ngOnInit(): void {
 
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%FULL")
 
-    // if (this.tokenService.isLogged()) {
-    //   return;
-    // }
-
-    // this.utilToolsService.Timer();
-    // if (this.tokenService.isLogged()) {
-    //   this.router.navigate(['/dashboard']);
-    //   this.utilToolsService.CloseTimer();
-    // } else {
-    //   this.utilToolsService.CloseTimer();
-    // }
-  
-  
   }
 
 }

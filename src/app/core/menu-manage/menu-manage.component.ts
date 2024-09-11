@@ -26,23 +26,20 @@ export class MenuManageComponent implements OnInit{
     private router: Router
   ) { }
   
-  async ngOnInit() {
+  ngOnInit() {
     this.isLogged =  this.tokenService.isLogged();
 
-    // this.eventService.flagLogged.subscribe( res => {
-    //   if (res) {
-    //     this.isLogged = true;
-    //   }
-    // });
   }
 
 
   onLogOut(): void{
     this.tokenService.logOut();
     this.isLogged = false;
+    this.eventService.flagLogout.emit(true);
+    
     this.router.navigate(['/site']);
 
-    this.eventService.flagLogout.emit(true);
+    // this.eventService.flagLogged.emit(true);
   }
 
   onSmallMenu(): void{

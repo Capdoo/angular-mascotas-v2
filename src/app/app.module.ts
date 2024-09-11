@@ -14,7 +14,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { HttpClientModule } from '@angular/common/http';
 import { ManageComponent } from './layouts/manage/manage.component';
 import { MaterialModule } from './shared/material.module';
-import { DashboardRoutingModule } from './pages/dashboard/dashboard-routing.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MenuListItemComponent } from './layouts/components/menu-list-item/menu-list-item.component';
 import { TableComponent } from './layouts/components/table/table.component';
@@ -22,6 +21,8 @@ import { LoginGuard } from './guard/login.guard';
 import { ResourceGuard } from './guard/resource.guard';
 import { ManageGuard } from './guard/manage.guard';
 import { HomeModule } from './pages/home/home.module';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { interceptorProvicer } from './interceptor/resource-interceptor.service';
 
 
 @NgModule({
@@ -41,16 +42,17 @@ import { HomeModule } from './pages/home/home.module';
     NgxSpinnerModule,
     HttpClientModule,
     MaterialModule,
-    // DashboardRoutingModule
     LayoutModule,
-    HomeModule
+    HomeModule,
+    DashboardModule
   ],
   providers: [
     // provideClientHydration(),
     provideAnimationsAsync(),
     LoginGuard,
     ResourceGuard,
-    ManageGuard
+    ManageGuard,
+    interceptorProvicer
   ],
   bootstrap: [AppComponent]
 })
