@@ -1,6 +1,75 @@
-<p>b-optional-info works!</p>
+<div class="flex justify-content-center" style="border: none; width: auto; height: auto; margin: 25px;">
+  <!-- <p>a-general-info works!</p> -->
 
-<div class="mt-5 flex justify-content-between" style="border: none; padding: 20px">
+
+  <mat-card appearance="outlined" class="mt-1 px-2 grid" style="width: 100%;">
+
+    <mat-card-header class="col-12">
+      <mat-card-title class=" mt-2">Información adicional</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="col-12 mt-3">
+
+      <form class="grid" action="" [formGroup]="newPetFormGroup">
+
+        <mat-form-field floatLabel="always" class="col-12 col-lg-6 example-full-width mt-4 mt-lg-2"
+          style="border: none;">
+          <mat-label>Tamaño</mat-label>
+          <input matInput formControlName="newPetSize" [maxlength]="30" appTextOnly>
+          @if (newPetFormGroup.get('newPetSize').hasError('required')) {
+          <mat-error>Tamaño is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="col-12 col-lg-6 example-full-width mt-4 mt-lg-2"
+          style="border: none;">
+          <mat-label>Color</mat-label>
+          <input matInput formControlName="newPetColour" [maxlength]="30" appTextOnly>
+          @if (newPetFormGroup.get('newPetColour').hasError('required')) {
+          <mat-error>Color is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="col-12 col-lg-6 example-full-width mt-4 mt-lg-2"
+          style="border: none;">
+          <mat-label>Raza Específica</mat-label>
+          <input matInput formControlName="newPetSpecificBreed" [maxlength]="30" appTextOnly>
+          @if (newPetFormGroup.get('newPetSpecificBreed').hasError('required')) {
+          <mat-error>Raza Específica is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="col-12 col-lg-6 example-full-width mt-4 mt-lg-2"
+          style="border: none;">
+          <mat-label>Fecha de Nacimiento</mat-label>
+
+          <!-- <input matInput formControlName="newPetBirthDate" [maxlength]="30"> -->
+          <input matInput [matDatepicker]="picker" formControlName="newPetBirthDate">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+
+          @if (newPetFormGroup.get('newPetBirthDate').hasError('required')) {
+          <mat-error>Fecha de nacimiento is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="col-12 example-full-width mt-4 mt-lg-2"
+          style="border: none;">
+          <mat-label>Característica</mat-label>
+          <input matInput formControlName="newPetCharacteristic" [maxlength]="30" appTextOnly>
+          @if (newPetFormGroup.get('newPetCharacteristic').hasError('required')) {
+          <mat-error>Raza Específica is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+<div class="mt-5 flex justify-content-between" style="border: none; width: auto; height: auto; margin: 25px;">
   <button mat-raised-button color="primary" class="first_color" (click)="retroceder()" type="button">
     Atrás
   </button>
@@ -8,5 +77,3 @@
     Siguiente
   </button>
 </div>
-
-

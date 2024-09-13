@@ -116,7 +116,7 @@
             <mat-form-field floatLabel="always" class="example-full-width col-12 col-md-6">
               <mat-label>Distrito</mat-label>
               <mat-select formControlName="registerDistrito" [errorStateMatcher]="matcher">
-                <mat-option *ngFor="let item of distritos" value="one">{{item.description}}</mat-option>
+                <mat-option *ngFor="let item of distritos" [value]="item.description">{{item.description}}</mat-option>
               </mat-select>
 
               @if (registerGroup.get('registerDistrito').hasError('required')) {

@@ -14,9 +14,7 @@
         </div>
 
         <div class="flex align-items-center"  style="border: none;">
-          <!-- <div class="flex align-items-center lg:hidden" style="margin-right: 5px; border: none;">
-            <mat-icon class="" style=" border: none;">home</mat-icon>
-          </div> -->
+
           <span>
             Mascotas Perdidas Dashboard
           </span>
@@ -26,20 +24,7 @@
       </div>
 
       <div class="full-list-options hidden lg:block" *ngIf="!smLimit" style="border: none;">
-        <!--
-        <button mat-button routerLink="home">Inicio</button>
-        <button *ngIf="isLogged" mat-button routerLink="newevaluation">Adopciones</button>
-        <button *ngIf="isLogged" (click)="cleanGlobalInfo()" mat-button routerLink="myevaluations">
-          Mis Evaluaciones
-        </button>
-        <button *ngIf="!isLogged" mat-button routerLink="projects">Búsquedas</button>
-        <button *ngIf="!isLogged" mat-button routerLink="aboutus">Adopciones</button>
-        <button *ngIf="!isLogged" mat-button routerLink="aboutus">Albergues</button>
-        <button id="btn_login" class="btnLogin" *ngIf="!isLogged" mat-raised-button color="basic"
-          routerLink="auth/login">Iniciar Sesión</button>
-        <button *ngIf="!isLogged" mat-raised-button color="accent" routerLink="auth/register">Registrarse</button>
-        -->
-        
+
         <button class="btnLogout" *ngIf="isLogged" mat-raised-button color="accent" (click)="onLogOut()"
           routerLink="logout">
           Cerrar Sesión
@@ -54,15 +39,7 @@
         <button mat-button routerLink="home">Inicio</button>
       </div>
   
-      <!-- <div>
-        <button *ngIf="isLogged" mat-button (click)="cleanGlobalInfo()" routerLink="newevaluation">Nueva
-          Evaluación</button>
-      </div> -->
-  
-      <!-- <div>
-        <button *ngIf="isLogged" mat-button routerLink="newevaluation">Cdk Nueva Eval</button>
-      </div> -->
-  
+
       <div>
         <!-- <button *ngIf="isLogged" mat-button routerLink="projects">Búsquedas</button> -->
         <button  mat-button routerLink="projects">Búsquedas</button>

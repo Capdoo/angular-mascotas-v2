@@ -1,14 +1,41 @@
-<p>c-image-info works!</p>
+<div class="flex justify-content-center" style="border: none; width: auto; height: auto; margin: 25px;">
 
+  <mat-card appearance="outlined" class="mt-1 px-2 grid" style="width: 100%;">
 
+    <mat-card-header class="col-12">
+      <mat-card-title class=" mt-2">Imagen de la mascota</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="col-12 mt-3 flex justify-content-center">
+
+      <div class="image-container" (click)="uploadImage()" style="padding: 20px; border: none;">
+        <form class="grid" action="" [formGroup]="newPetFormGroup" >
+          <input #fileInput type="file" (change)="readUrl($event)" class="custom-file-input"
+            style="border: none; cursor: pointer;" required hidden>
+
+          <div class="image-container" style="border: none;">
+            <img  class="img-fluid float-right" [src]="imgSrc || 'assets/pet_default_gray4.png' " alt=""
+              style="border: none">
+
+          </div>
+        </form>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div>
+  <button (click)="verCurrentImg()">
+    #verCurrentImage
+  </button>
+</div>
 
 <div class="mt-5 flex justify-content-between" style="border: none; padding: 20px">
   <button mat-raised-button color="primary" class="first_color" (click)="retroceder()" type="button">
     Atrás
   </button>
   <button mat-raised-button color="primary" class="first_color" (click)="avanzar()" type="button">
-    Siguiente
+    Registrar
   </button>
 </div>
-
-

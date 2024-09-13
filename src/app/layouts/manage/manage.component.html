@@ -24,6 +24,15 @@
 
         <mat-nav-list class="flex flex-column">
           <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+
+          <mat-list-item (click)="onCerrarSesion()" class="menu-list-item " style="border: none;">
+            <mat-icon matListItemIcon class="routeIcon flex align-items-center" style="border: none; height: 100%;">
+              logout
+            </mat-icon>
+            Cerrar Sesión
+            <span>
+            </span>
+          </mat-list-item>
         </mat-nav-list>
       </div>
     </mat-drawer>

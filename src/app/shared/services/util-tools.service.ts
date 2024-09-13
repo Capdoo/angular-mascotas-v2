@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2'
 import { NgxSpinnerService } from 'ngx-spinner';
+import { EventService } from './event.service';
+import { TokenService } from './token.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,10 @@ export class UtilToolsService {
   interval: any;
   timeLeft: number = 1;
 
-  constructor(    private spinner: NgxSpinnerService
+  constructor(    private spinner: NgxSpinnerService,
+    private eventService: EventService,
+    private tokenService: TokenService,
+    private router: Router
   ) { }
 
   mostrarMensaje() {
@@ -106,6 +112,25 @@ export class UtilToolsService {
         left top
         no-repeat
       `
+    });
+  }
+
+  logoutMessage(): void {
+    Swal.fire({
+      title: 'Cerrar Sesión',
+      text: '¿Está seguro(a)?',
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.tokenService.logOut();
+        this.eventService.flagLogout.emit(true);
+        this.router.navigate(['/site']);
+      }
     });
   }
 

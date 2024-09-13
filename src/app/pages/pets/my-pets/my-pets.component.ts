@@ -12,6 +12,7 @@ export class MyPetsComponent implements OnInit{
   
   listPetsDto: PetDto[];
   flagPets: boolean = false;
+  flagNoPets: boolean = false;
 
   constructor(private petService: PetsService,
     private utilToolsService: UtilToolsService
@@ -29,17 +30,18 @@ export class MyPetsComponent implements OnInit{
           this.flagPets = true;
           this.utilToolsService.successNotif('Mis Mascotas', 'Mascotas cargadas correctamente');
         } else {
+          this.flagNoPets = true;
           // this.utilToolsService.infoNotif('Mis Mascotas', 'Aún no tienes mascotas registradas');
         }
         this.utilToolsService.CloseTimer();
       },
       err => {
+        this.flagNoPets = true;
+        this.utilToolsService.CloseTimer();
         console.error(err);
         this.utilToolsService.errNotif('Mis Mascotas', err.error.message);
-        this.utilToolsService.CloseTimer();
       }
-    )
-  
+    );
   }
 
 }

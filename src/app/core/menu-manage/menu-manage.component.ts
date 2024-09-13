@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../shared/services/event.service';
 import { TokenService } from '../../shared/services/token.service';
 import { Router } from '@angular/router';
+import { UtilToolsService } from '../../shared/services/util-tools.service';
 
 @Component({
   selector: 'app-menu-manage',
@@ -23,7 +24,8 @@ export class MenuManageComponent implements OnInit{
 
   constructor(private eventService: EventService,
     private tokenService: TokenService,
-    private router: Router
+    private router: Router,
+    private utilToolsService: UtilToolsService
   ) { }
   
   ngOnInit() {
@@ -33,13 +35,17 @@ export class MenuManageComponent implements OnInit{
 
 
   onLogOut(): void{
-    this.tokenService.logOut();
-    this.isLogged = false;
-    this.eventService.flagLogout.emit(true);
+    // this.tokenService.logOut();
+    // this.isLogged = false;
+    // this.eventService.flagLogout.emit(true);
     
-    this.router.navigate(['/site']);
+    // this.router.navigate(['/site']);
 
     // this.eventService.flagLogged.emit(true);
+
+    this.utilToolsService.logoutMessage();
+
+
   }
 
   onSmallMenu(): void{

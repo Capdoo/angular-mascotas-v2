@@ -51,14 +51,14 @@ export class ManageComponent implements OnInit {
       route: '',
       children: [
         {
-          displayName: 'Nueva mascota',
+          displayName: 'Nueva adopción',
           iconName: 'add',
-          route: 'dashboard/pets/new-pet'
+          route: 'dashboard/adoptions/new-adoption'
         },
         {
-          displayName: 'Mis mascotas',
-          iconName: 'bookmark_heart',
-          route: 'dashboard/pets/my-pets'
+          displayName: 'Mis adopciones',
+          iconName: 'dashboard',
+          route: 'dashboard/adoptions/my-adoptions'
         },
       ]
     },
@@ -72,11 +72,11 @@ export class ManageComponent implements OnInit {
       iconName: 'house_with_shield',
       route: ''
     },
-    {
-      displayName: 'Cerrar Sesión',
-      iconName: 'logout',
-      route: ''
-    },
+    // {
+    //   displayName: 'Cerrar Sesión',
+    //   iconName: 'logout',
+    //   route: ''
+    // },
   ]
 
   constructor(private eventService: EventService,
@@ -122,8 +122,10 @@ export class ManageComponent implements OnInit {
     );
 
     this.username = this.tokenService.getUsername();
+  }
 
-
+  onCerrarSesion(): void {
+    this.utilToolsService.logoutMessage();
   }
 
 

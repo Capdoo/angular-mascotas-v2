@@ -1,35 +1,43 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { UtilToolsService } from '../../../../../shared/services/util-tools.service';
 
 @Component({
   selector: 'app-c-image-info',
   templateUrl: './c-image-info.component.html',
   styleUrl: './c-image-info.component.css'
 })
-export class CImageInfoComponent {
+export class CImageInfoComponent implements OnInit {
 
-
-  
+  @Input() newPetFormGroup: FormGroup;
   @Output() listenerCambiosForm = new EventEmitter<any>();
+  @Output() listenerSubmit = new EventEmitter<any>();
   //dev
   @Input() form: any;
   @Input() isEdit: boolean;
+  @Output() sendUploadImage = new EventEmitter<string>();
+  @ViewChild("fileInput", { static: false }) fileInput!: ElementRef<HTMLInputElement>;
+
+  imgSrc!: string;
+  encoded!: string;
+
+  constructor(private utilToolsService: UtilToolsService) {
+  }
+
+  ngOnInit(): void {
+    if (this.newPetFormGroup.get('newPetImage').valid) {
+      this.imgSrc = 'data:image/jpeg;base64,'+this.newPetFormGroup.get('newPetImage').value;
+    }
+  }
 
   avanzar() {
-    // if (this.camposGroup.valid) {
-    //   if (this.form && this.form.formId) {
-    //     if (this.camposGroup.controls['filtroTipoForm'].value == this.form.formTipo && this.camposGroup.controls['filtroNombre'].value == this.form.formTitulo) {
-    //       this.emitirCambio(this.form);
-    //     } else {
-    //       this.actualizarFormulario(this.form.formId);
-    //     }
-    //   } else {
-    //     this.registrarFormulario();
-    //   }
-    // } else {
-    //   this.camposGroup.markAllAsTouched();
-    //   this.utilTools.alert('info', this.translate.instant('datosformulario.title'), this.translate.instant('datosformulario.msg_invalid_data'), this.translate.instant('alert.alert_ok'));
-    // }
-    // this.emitirCambio(this.form);
+    // let image = this.imgSrc.split();
+
+    if (!this.newPetFormGroup.get('newPetImage').valid) {
+      this.utilToolsService.errNotif('Imagen de la mascota', 'Campos incorrectos');
+      return;
+    }
+
     this.emitirCambio();
   }
 
@@ -40,12 +48,46 @@ export class CImageInfoComponent {
     });
   }
 
-  // emitirCambio(formulario: any) {
   emitirCambio() {
-    this.listenerCambiosForm.emit({
-      // form: formulario,
-      flagAvanzar: true
+    // this.listenerCambiosForm.emit({
+    //   flagAvanzar: true
+    // });
+
+    this.listenerSubmit.emit({
     });
+  }
+
+  uploadImage(): void {
+    this.fileInput.nativeElement.click();
+  }
+
+  readUrl(event: any) {
+    const file = (event.target as HTMLInputElement).files![0];
+    const reader = new FileReader();
+    reader.onload = e => this.imgSrc = String(reader.result);
+    reader.readAsDataURL(file);
+    this.catchEncoded(event);
+  }
+  catchEncoded(event: any): void {
+    const file = (event.target as HTMLInputElement).files![0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64String = String(reader.result)!
+        .replace('data:', '')
+        .replace(/^.+,/, '');
+      this.encoded = base64String;
+      this.newPetFormGroup.get('newPetImage').setValue(this.encoded);
+      this.sendUploadImage.emit(base64String);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  verCurrentImg(): void {
+    console.log("Este es el encoded");
+    console.log(this.encoded);
+    console.log("Este es el imgSrc");
+    console.log(this.imgSrc);
+    
   }
 
 }

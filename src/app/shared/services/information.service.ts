@@ -15,7 +15,11 @@ export class InformationService {
 
   public getDistricts(): Observable<InformationDto[]> {
     const url = `${this.url}/information/districts`;
+    return this.httpClient.get<InformationDto[]>(url);
+  }
 
+  public getGenres(): Observable<InformationDto[]> {
+    const url = `${this.url}/information/genres`;
     return this.httpClient.get<InformationDto[]>(url);
   }
 }

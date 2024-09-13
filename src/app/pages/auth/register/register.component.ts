@@ -65,8 +65,8 @@ export class RegisterComponent implements OnInit {
       registerTelefono2: ['', ],
       registerCorreo: ['', [Validators.required, Validators.email]],
       registerProvincia: ['', ],
-      registerDistrito: ['', Validators.required],
       registerDireccion: [''],
+      registerDistrito: ['', Validators.required],
     });
   }
 

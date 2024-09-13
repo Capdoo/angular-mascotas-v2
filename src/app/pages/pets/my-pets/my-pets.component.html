@@ -12,11 +12,9 @@
 </div>
 
 
-<div class="my-pets-container flex justify-content-center" style="border: none;">
-
+<div *ngIf="flagNoPets" class="my-pets-container flex justify-content-center" style="border: none;">
   <div class="contenido align-items-center mt-4 " style="border: none; width: 95%; height: auto; ">
-
-    <div *ngIf="!flagPets" style="margin-left: 29px">
+    <div  style="margin-left: 29px">
       <h3 style="color: gray;">Cuando registres tus mascotas, apareceran aqui:)</h3>
     </div>
   </div>

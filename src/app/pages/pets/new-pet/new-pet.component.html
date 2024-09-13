@@ -1,58 +1,49 @@
 <div class="mt-4 my-pets-container flex justify-content-center" style="border: dotted;">
-
   <div class="contenido align-items-center mt-4 " style="border: double; width: 95%; height: auto;">
-
-    <div class="flex justify-content-start align-items-end" style="border: ridge; width: 100%; height: auto; margin-left: 25px;">
+    <div class="flex justify-content-start align-items-end"
+      style="border: ridge; width: auto; height: auto; margin-left: 25px; margin-right: 25px;">
       <h1>Nueva Mascota</h1>
     </div>
-
   </div>
-
 </div>
-
 
 <div class="mt-4 my-pets-container flex justify-content-center" style="border: dotted;">
   <div class="contenido align-items-center mt-4 " style="border: double; width: 95%; height: auto;">
 
-    <div class="flex justify-content-center" style="border: ridge; width: auto; height: auto; margin: 25px;">
+    <div class="flex justify-content-center" style="border: none; width: auto; height: auto; margin: 25px;">
       <app-stepper [etapaId]="etapaId" [etapas]="etapas" style="width: 100%;"></app-stepper>
     </div>
 
-    <div class="flex justify-content-center" style="border: ridge; width: auto; height: auto; margin: 25px;">
-
-      <ng-container [ngSwitch]="etapaId">
-
-        <ng-container *ngSwitchCase="1">
-          <!-- <app-individual (listenerCambiosForm)="cambiarEtapa($event)" [form]="form"> -->
-          <!-- </app-individual> -->
-           <app-a-general-info (listenerCambiosForm)="cambiarEtapa($event)"></app-a-general-info>
-        </ng-container>
-      
-        <ng-container *ngSwitchCase="2">
-          <app-b-optional-info (listenerCambiosForm)="cambiarEtapa($event)"></app-b-optional-info>
-
-          <!-- <app-a-group (listenerCambiosForm)="cambiarEtapa($event)" [form]="form"> -->
-          <!-- </app-a-group> -->
-        </ng-container>
-      
-        <ng-container *ngSwitchCase="3">
-          <app-c-image-info (listenerCambiosForm)="cambiarEtapa($event)"></app-c-image-info>
-          <!-- <app-b-group (listenerCambiosForm)="cambiarEtapa($event)" [form]="form"> -->
-          <!-- </app-b-group> -->
-        </ng-container>
-      
+    <ng-container [ngSwitch]="etapaId">
+      <ng-container *ngSwitchCase="1">
+        <app-a-general-info (listenerCambiosForm)="cambiarEtapa($event)" [flagAvanzar]="flagAvanzarGeneral"
+          [newPetFormGroup]="newPetFormGroup"></app-a-general-info>
       </ng-container>
-      
-      <div class="mt-5">
-        <pre>
+
+      <ng-container *ngSwitchCase="2">
+        <app-b-optional-info (listenerCambiosForm)="cambiarEtapa($event)"
+          [newPetFormGroup]="newPetFormGroup"></app-b-optional-info>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="3">
+        <app-c-image-info (listenerCambiosForm)="cambiarEtapa($event)" (listenerSubmit)="submit($event)"
+          [newPetFormGroup]="newPetFormGroup"></app-c-image-info>
+      </ng-container>
+    </ng-container>
+
+    <!-- <div class="mt-5">
+      <pre>
           Etapas: {{etapaString | json}}
         </pre>
-        <pre>
+      <pre>
           Etapa Id: {{etapaId | json}}
         </pre>
-      </div>
+    </div> -->
+
+    <div class="mt-5">
+      <button (click)="verMascota()">
+        ir viendo mascota
+      </button>
     </div>
-
   </div>
-
 </div>

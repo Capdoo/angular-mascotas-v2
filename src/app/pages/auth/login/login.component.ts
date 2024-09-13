@@ -1,4 +1,4 @@
- import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { UtilToolsService } from '../../../shared/services/util-tools.service';
 import { AuthService } from '../../../shared/services/auth.service';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   loginGroup: FormGroup;
 
@@ -56,7 +56,6 @@ export class LoginComponent {
 
           console.log(data);
           this.utilToolsService.successNotif('Login', 'Login exitoso');
-
           this.router.navigate(['/dashboard']);
 
         },

@@ -1,0 +1,15 @@
+
+.image-container{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.image-container:hover{
+  transform: scale(1.025);
+}
+
+img {
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+}
